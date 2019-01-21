@@ -69,3 +69,18 @@ void App::onCanvasClicked()
             m_state->setSelectedShape(shape);
         }
 }
+
+void App::onCanvasMove(QPoint location)
+{
+    // TODO: qInfo() << "onCanvasMove";
+}
+
+void App::onSetStartPoint(QPoint start)
+{
+    qInfo() << "onCanvasStart";
+}
+
+void App::onSetEndPoint(QPoint end)
+{
+    qInfo() << "onCanvasEnd";
+}

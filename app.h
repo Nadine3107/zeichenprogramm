@@ -49,6 +49,9 @@ public slots:
      * @details Adds a Shape-Object to the scene.
      */
     void onCanvasClicked();
+    void onCanvasMove(QPoint location);
+    void onSetStartPoint(QPoint start);
+    void onSetEndPoint(QPoint end);
 
 };
 
