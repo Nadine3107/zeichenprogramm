@@ -37,6 +37,9 @@ void App::setState(AppState *state)
 
 void App::onCanvasClicked()
 {
+    if(m_state->selectedTool() != LINE)
+        m_lineStarted = false; // wichtig, damit bei einem Toolwechsel nicht zusätzlich eine Linie gezeichnet wird
+
     //fügt das derzet in m_state ausgewählte Element aus und fügt es m_scene hinzu
     //Die Variablen rechnen bei der angegeben Höhe und Breite durch 2, damit das Element an deer Spitze des mauszeigers erscheint und nicht links davon
 
