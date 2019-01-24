@@ -25,6 +25,11 @@ private:
      * @brief m_state
      */
     AppState *m_state;
+
+    bool m_lineStarted = false;
+    qreal m_lineStartX = -1;
+    qreal m_lineStartY = -1;
+
 public:
     /**
      * @brief App

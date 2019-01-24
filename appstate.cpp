@@ -30,6 +30,8 @@ void AppState::setSelectedTool(const QString &selectedTool)
         m_selectedTool = Tool::DELETE;
     } else if(selectedTool == "No Selection"){
         m_selectedTool = Tool::NO_SELECTION;
+    } else if(selectedTool == "Line"){
+        m_selectedTool = Tool::LINE;
     }
 }
 

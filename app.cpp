@@ -67,6 +67,24 @@ void App::onCanvasClicked()
             shape->setBrush(QBrush(m_state->selectedColor()));
             m_scene->addItem(shape);
             m_state->setSelectedShape(shape);
+        } else if (m_state->selectedTool() == LINE) {
+            if(m_lineStarted) {
+                double mStateX = m_state->selectedPosition().rx() - m_state->selectedWidth() / 2;
+                double mStateY = m_state->selectedPosition().ry() - m_state->selectedHeight() / 2;
+                QBrush brush = QBrush(m_state->selectedColor());
+                brush.setStyle(Qt::BrushStyle::SolidPattern);
+                QPen pen = QPen(brush, m_state->selectedWidth(), Qt::PenStyle::SolidLine, Qt::PenCapStyle::RoundCap, Qt::PenJoinStyle::RoundJoin);
+                QGraphicsLineItem *shape = new QGraphicsLineItem(m_lineStartX, m_lineStartY, mStateX, mStateY, nullptr);
+                shape->setPen(pen);
+                m_scene->addItem(shape);
+                m_lineStarted = false;
+            } else {
+                double mStateX = m_state->selectedPosition().rx() - m_state->selectedWidth() / 2;
+                double mStateY = m_state->selectedPosition().ry() - m_state->selectedHeight() / 2;
+                m_lineStartX = mStateX;
+                m_lineStartY = mStateY;
+                m_lineStarted = true;
+            }
         }
 }
 

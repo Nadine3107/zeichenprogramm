@@ -49,6 +49,11 @@
         </item>
         <item>
          <property name="text">
+          <string>Line</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>Circle</string>
          </property>
         </item>

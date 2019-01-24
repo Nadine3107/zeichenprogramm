@@ -29,8 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(app->scene(), SIGNAL(mouseClicked(QPoint)), app->state(), SLOT(setSelectedPosition(QPoint)));
     connect(app->scene(), SIGNAL(mouseClicked(QPoint)), app, SLOT(onCanvasClicked()));
     connect(app->scene(), SIGNAL(mouseMoved (QPoint)), app, SLOT(onCanvasMove(QPoint)));
-    connect(ui->canvas, SIGNAL(mousePressed(QPoint)), app, SLOT(onSetStartPoint(QPoint)));
-    connect(ui->canvas, SIGNAL(mouseReleased(QPoint)), app, SLOT(onSetEndPoint(QPoint)));
+    connect(app->scene(), SIGNAL(mousePressed(QPoint)), app, SLOT(onSetStartPoint(QPoint)));
+    connect(app->scene(), SIGNAL(mouseReleased(QPoint)), app, SLOT(onSetEndPoint(QPoint)));
 
 }
 

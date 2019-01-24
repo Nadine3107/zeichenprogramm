@@ -16,7 +16,7 @@
  * @param NO_SELECTION
  */
 enum Tool {
-    RECTANGLE, SQUARE, CIRCLE, DELETE, NO_SELECTION
+    RECTANGLE, SQUARE, CIRCLE, DELETE, NO_SELECTION, LINE
 };
 /**
  * @brief The AppState class
