@@ -13,20 +13,24 @@ MainWindow::MainWindow(QWidget *parent) :
     App *app = new App;
 
     // Standardwerte
-    app->state()->setSelectedWidth(100);
-    app->state()->setSelectedHeight(100);
+    //app->state()->setSelectedWidth(100);
+    //app->state()->setSelectedHeight(100);
     app->state()->setSelectedTool("Rectangle");
 
     ui->canvas->setScene(app->scene());
+    ui->canvas->setMouseTracking(true);
 
-    connect( ui->comboBox_tool, SIGNAL(currentTextChanged(QString)), app->state(), SLOT(setSelectedTool(QString)));
+    connect(ui->comboBox_tool, SIGNAL(currentTextChanged(QString)), app->state(), SLOT(setSelectedTool(QString)));
     connect(ui->comboBox_color, SIGNAL(currentTextChanged(QString)), app->state(), SLOT(setSelectedColor(QString)));
-    connect( ui->spinBox_width, SIGNAL(valueChanged(int)), app->state(), SLOT(setSelectedWidth(int)));
+    connect(ui->spinBox_width, SIGNAL(valueChanged(int)), app->state(), SLOT(setSelectedWidth(int)));
     connect(app->state(), SIGNAL(widthChanged), ui->spinBox_width, SLOT(setValue(int)));
-    connect( ui->spinBox_height, SIGNAL(valueChanged(int)), app->state(), SLOT(setSelectedHeight(int)));
+    connect(ui->spinBox_height, SIGNAL(valueChanged(int)), app->state(), SLOT(setSelectedHeight(int)));
     connect(app->state(), SIGNAL(heightChanged), ui->spinBox_height, SLOT(setValue(int)));
     connect(app->scene(), SIGNAL(mouseClicked(QPoint)), app->state(), SLOT(setSelectedPosition(QPoint)));
     connect(app->scene(), SIGNAL(mouseClicked(QPoint)), app, SLOT(onCanvasClicked()));
+    connect(app->scene(), SIGNAL(mouseMoved (QPoint)), app, SLOT(onCanvasMove(QPoint)));
+    connect(app->scene(), SIGNAL(mousePressed(QPoint)), app, SLOT(onSetStartPoint(QPoint)));
+    connect(app->scene(), SIGNAL(mouseReleased(QPoint)), app, SLOT(onSetEndPoint(QPoint)));
 
 }
 

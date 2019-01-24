@@ -3,7 +3,8 @@
 
 AppState::AppState(QObject *parent) : QObject(parent)
 {
-
+    m_selectedWidth = 15;
+    m_selectedHeight = 15;
 }
 
 AppState::~AppState()
@@ -29,6 +30,8 @@ void AppState::setSelectedTool(const QString &selectedTool)
         m_selectedTool = Tool::DELETE;
     } else if(selectedTool == "No Selection"){
         m_selectedTool = Tool::NO_SELECTION;
+    } else if(selectedTool == "Line"){
+        m_selectedTool = Tool::LINE;
     }
 }
 
@@ -95,6 +98,18 @@ QPoint AppState::selectedPosition() const
 void AppState::setSelectedPosition(const QPoint &selectedPosition)
 {
     m_selectedPosition = selectedPosition;
+}
+
+void AppState::setStartPoint(const QPoint &start)
+{
+    if(leftMouseButtonDown)
+        startPoint = start;
+}
+
+void AppState::setEndPoint(const QPoint &end)
+{
+    if(leftMouseButtonDown)
+        endPoint = end;
 }
 
 QAbstractGraphicsShapeItem *AppState::selectedShape() const

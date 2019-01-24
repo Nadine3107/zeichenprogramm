@@ -25,6 +25,11 @@ private:
      * @brief m_state
      */
     AppState *m_state;
+
+    bool m_lineStarted = false;
+    qreal m_lineStartX = -1;
+    qreal m_lineStartY = -1;
+
 public:
     /**
      * @brief App
@@ -49,6 +54,9 @@ public slots:
      * @details Adds a Shape-Object to the scene.
      */
     void onCanvasClicked();
+    void onCanvasMove(QPoint location);
+    void onSetStartPoint(QPoint start);
+    void onSetEndPoint(QPoint end);
 
 };
 

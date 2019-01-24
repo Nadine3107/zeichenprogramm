@@ -16,7 +16,7 @@
  * @param NO_SELECTION
  */
 enum Tool {
-    RECTANGLE, SQUARE, CIRCLE, DELETE, NO_SELECTION
+    RECTANGLE, SQUARE, CIRCLE, DELETE, NO_SELECTION, LINE
 };
 /**
  * @brief The AppState class
@@ -65,6 +65,10 @@ private:
      */
     QAbstractGraphicsShapeItem* m_selectedShape;
 
+    bool leftMouseButtonDown = false;
+    QPoint startPoint;
+    QPoint endPoint;
+
     void setSelectedColor(const QColor &selectedColor);
 
 public:
@@ -92,6 +96,8 @@ public slots:
     void setSelectedHeight(const int &selectedHeight);
     void setSelectedPosition(const QPoint &selectedPosition);
     void setSelectedShape(QAbstractGraphicsShapeItem *selectedShape);
+    void setStartPoint(const QPoint &start);
+    void setEndPoint(const QPoint &end);
 
 };
 
