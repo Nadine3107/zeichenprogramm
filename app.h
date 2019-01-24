@@ -2,6 +2,7 @@
 #define APP_H
 
 #include <QObject>
+#include <QException>
 #include "scene.h"
 #include "appstate.h"
 
@@ -29,6 +30,9 @@ private:
     bool m_lineStarted = false;
     qreal m_lineStartX = -1;
     qreal m_lineStartY = -1;
+    QGraphicsLineItem* m_tempLine = nullptr;
+    QGraphicsEllipseItem* m_tempLineStartPoint = nullptr;
+    void removeFromScene(Scene* scene, QGraphicsItem* item);
 
 public:
     /**
