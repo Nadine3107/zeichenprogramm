@@ -29,6 +29,8 @@ private:
     bool m_lineStarted = false;
     qreal m_lineStartX = -1;
     qreal m_lineStartY = -1;
+    QGraphicsLineItem* m_tempLine = nullptr;
+    QGraphicsEllipseItem* m_tempLineStartPoint = nullptr;
 
 public:
     /**
